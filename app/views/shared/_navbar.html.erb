@@ -1,0 +1,26 @@
+<nav class="bg-slate-100 rounded-md">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
+          <div class="text-xl font-bold text-indigo-600">
+            <%= link_to "DS-Assignment", root_path %>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div class="relative ml-3">
+          <div>
+            <% if user_signed_in? %>
+              <%= link_to "Edit Profile |", edit_user_registration_path, class: "text-indigo-600 font-bold" %>
+              <%= link_to "Sign Out", destroy_user_session_path, class: "text-indigo-600 font-bold" %>
+            <% else %>
+              <%= link_to "Sign Up |", new_user_registration_path, class: "text-indigo-600 font-bold" %>
+              <%= link_to "Sign In", user_session_path, class: "text-indigo-600 font-bold" %>
+            <% end  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
