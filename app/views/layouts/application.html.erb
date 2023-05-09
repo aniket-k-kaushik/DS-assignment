@@ -12,7 +12,10 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="mt-10 ml-10 mr-10">
+      <%= render "shared/navbar" %>
+      <p class="mt-10 font-bold text-green-600 text-center"><%= notice %></p>
+      <p class="mt-10 font-bold text-orange-600 text-center"><%= alert %></p>
       <%= yield %>
     </main>
   </body>
