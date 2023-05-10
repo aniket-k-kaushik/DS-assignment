@@ -6,12 +6,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def update_role_referral_id
       if get_referral_id.present?
-        current_user.update(role: :referral, referral_id: @referral)
+        current_user.update(role: :referral, referral_id: @referral.user_id)
         @referral.update(status: :accepted)
       end
     end
 
     def get_referral_id
-      @referral = Referral.find_by(uuid: params["user"]["uuid"]).user_id if params["user"]["uuid"].present?
+      @referral = Referral.find_by(uuid: params["user"]["uuid"]) if params["user"]["uuid"].present?
     end
 end
