@@ -1,0 +1,41 @@
+<div class="box-border h-100 w-100 p-4 border-4 justify-center mx-96">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-base font-semibold leading-6 text-gray-900">Users Details </h1>
+    </div>
+  </div>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead>
+          <tr>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fields</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Details</th>
+          </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+          <tr>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-5">First Name</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= current_user.first_name %></td>
+          </tr>
+          <tr>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-5">Last Name</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= current_user.last_name %></td>
+          </tr>
+          <tr>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-5">Email</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= current_user.email %></td>
+          </tr>
+          <% if current_user.referral? %>
+            <tr>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-5">Referred by</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= current_user.referral.first_name %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

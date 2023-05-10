@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_193156) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_210812) do
+  create_table "referrals", charset: "utf8mb3", force: :cascade do |t|
+    t.string "email", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "resend_count", default: 0, null: false
+    t.string "uuid", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email", "user_id"], name: "uniq_email_per_user", unique: true
+    t.index ["user_id"], name: "index_referrals_on_user_id"
+    t.index ["uuid"], name: "index_referrals_on_uuid", unique: true
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -22,8 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_193156) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.integer "role", default: 0, null: false
+    t.bigint "referral_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["referral_id"], name: "index_users_on_referral_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "referrals", "users"
 end

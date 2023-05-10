@@ -1,0 +1,5 @@
+<% if policy(Referral).can_access? %>
+  <%= render "referrals/referral_table" %>
+<% else %>
+  <%= render "referrals/user_details" %>
+<% end %>
