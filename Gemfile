@@ -78,3 +78,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "letter_opener", "~> 1.8", :group => :development
+
+gem "pundit", "~> 2.3"
